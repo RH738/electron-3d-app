@@ -1,19 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
+</head>
+<body>
+    <style>
+        body {
+            background-color: black;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <p>
+      test
+    </p>
+</body>
 
-  <script>
-    // You can also require other files to run in this process
+<script>
+    require('./p5.js')
+        // You can also require other files to run in this process
     require('./renderer.js')
-  </script>
+
+    var r = 0;
+    function setup() {
+        createCanvas(500, 500, WEBGL)
+    }
+
+    function mousePressed(){
+        window.close();
+    }
+    function draw() {
+        background(0)
+        rotate(r, [0, 1, 0])
+        rotate(0.5, [1, 0, 0])
+        box(100, 100, 100)
+        r += 0.01;
+    }
+</script>
+
 </html>
